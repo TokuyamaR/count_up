@@ -5,3 +5,7 @@
 .text-red {
     color: red;
 }
+
+.dispNone {
+    display: none;
+}

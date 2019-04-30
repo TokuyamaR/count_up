@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // 文字数をカウント
             var count = this.value.length;
-
             var counterNode = document.querySelector('.show-count-text');
 
             changeColorText(count, counterNode);
@@ -39,13 +38,27 @@ function changeColorText(count, counterNode) {
 }
 
 function validation(count) {
-
     var submitNode = document.querySelector('.submit');
     // 文字数によって、フォームの送信を制御する
     if (count < 1 || count > 200) {
+        errorMessage(count);
         submitNode.disabled = true;
     } else if (count >= 1 || count <= 200 && submitNode.disabled === true) {
         submitNode.disabled = false;
+        document.querySelector('.errorMsg').classList.add('dispNone');
     }
 }
 
+function errorMessage(count) {
+    var errorMsg = '';
+
+    if (count < 1) {
+        errorMsg = '未入力です';
+        document.querySelector('.errorMsg').innerText = errorMsg;
+        document.querySelector('.errorMsg').classList.remove('dispNone');
+    } else if (count > 200) {
+        errorMsg = '200文字以内で入力してください';
+        document.querySelector('.errorMsg').innerText = errorMsg;
+        document.querySelector('.errorMsg').classList.remove('dispNone');
+    }
+}
