@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', function () {
             var counterNode = document.querySelector('.show-count-text');
 
             changeColorText(count, counterNode);
+            validation(count, counterNode);
 
             // カウント数を対象DOMへ反映
             counterNode.innerText = count;
@@ -28,12 +29,23 @@ function changeColorText(count, counterNode) {
     if (count >= 50 && count < 100) {
         counterNode.classList.remove('text-red');
         counterNode.classList.add('text-orange')
-    } else if (count >= 100) {
+    } else if (count >= 100 && count <= 200) {
         counterNode.classList.remove('text-orange');
         counterNode.classList.add('text-red');
     } else {
         counterNode.classList.remove('text-red');
         counterNode.classList.remove('text-orange')
+    }
+}
+
+function validation(count) {
+
+    var submitNode = document.querySelector('.submit');
+    // 文字数によって、フォームの送信を制御する
+    if (count < 1 || count > 200) {
+        submitNode.disabled = true;
+    } else if (count >= 1 || count <= 200 && submitNode.disabled === true) {
+        submitNode.disabled = false;
     }
 }
 
