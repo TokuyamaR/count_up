@@ -2,6 +2,10 @@
     color: orange;
 }
 
-.text-red {
+.text-red, .errorMsg {
     color: red;
+}
+
+.dispNone {
+    display: none;
 }
